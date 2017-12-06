@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<x:description 
+  xmlns:x="http://www.jenitennison.com/xslt/xspec" 
+  stylesheet="article-example.xsl">
+
+  <x:scenario label="Article test cases">
+    <x:scenario label="Everything stays the same">
+      <x:context>
+        <article>
+          <h1>This is my headline</h1>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:context>
+      <x:expect label="No changes">
+        <article>
+          <h1>This is my headline</h1>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:expect>    
+    </x:scenario>
+
+    <x:scenario label="Create headline from first paragraph">
+      <x:context>
+        <article>
+          <p>This is my headline</p>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:context>
+      <x:expect label="The first paragraph becomes a headline">
+        <article>
+          <h1>This is my headline</h1>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:expect>    
+    </x:scenario>    
+
+    <x:scenario label="Create an ingress from second paragraph">
+      <x:context>
+        <article>
+          <h1>This is my headline</h1>
+          <p>This is my ingress</p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:context>
+      <x:expect label="The second paragraph becomes a ingress">
+        <article>
+          <h1>This is my headline</h1>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:expect>    
+    </x:scenario>   
+
+    <x:scenario label="Create an ingress from paragraph following headers">
+      <x:context>
+        <article>
+          <h1>This is my headline</h1>
+          <p>This is my ingress</p>
+          <p>And lastly I want a body.</p>
+          <h1>This is my headline</h1>
+          <p>This is my ingress</p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:context>
+      <x:expect label="The paragraph after header becomes a ingress">
+        <article>
+          <h1>This is my headline</h1>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+          <h1>This is my headline</h1>
+          <p><strong>This is my ingress</strong></p>
+          <p>And lastly I want a body.</p>
+        </article>
+      </x:expect>    
+    </x:scenario>     
+
+  </x:scenario>
+</x:description>
